@@ -4,7 +4,7 @@
 #include "malloc.h"
 
 /**
-* malloc - naive version of malloc: dynnamically allocates memory on heap using sb
+* naive_malloc - naive version of malloc: dynnamically allocate using sb
 * @size: number of bytes to allocate
 *
 * Return: memory address newly allocated, or NULL on error
