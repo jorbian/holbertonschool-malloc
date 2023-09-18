@@ -10,4 +10,6 @@
 void *_malloc(size_t size)
 {
     (void *)size;
+
+    return (size);
 }
