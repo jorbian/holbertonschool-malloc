@@ -9,7 +9,7 @@
 */
 void *_malloc(size_t size)
 {
-    (void *)size;
+	(void *)size;
 
-    return (size);
+	return (size);
 }
