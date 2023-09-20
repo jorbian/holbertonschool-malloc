@@ -1,12 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <string.h>
 
 #include "malloc.h"
 
 #define MALIGN(x) ((8 - 1 + x) & ~(8 - 1))
 #define MALLOCD_PAGE sysconf(_SC_PAGESIZE)
+
+static void *_memcpy(void *vdst, const void *vsrc, int n)
+{
+  char *dst;
+  const char *src;
+
+  dst = vdst;
+  src = vsrc;
+  while(n-- > 0)
+    *dst++ = *src++;
+  return (vdst);
+}
 
 /**
 * naive_malloc - naive version of malloc: dynnamically allocate using sb
@@ -34,7 +45,7 @@ void *naive_malloc(size_t size)
 		block = block + MALLOCD_PAGE;
 	}
 	pointer = heap_pointer;
-	memcpy(pointer, &chunk_header, sizeof(chunk_header));
+	_memcpy(pointer, &chunk_header, sizeof(chunk_header));
 	heap_pointer = (void *)((char *)(pointer) + chunk_header);
 
 	return (
