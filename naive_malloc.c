@@ -9,24 +9,24 @@
 
 /**
 * _memcpy - reimplenatation of memcpy
-* @v_destination: place we're copying to
+* @v_dest: place we're copying to
 * @v_source: place we're copying from
 * @num_bytes: how much we're copying
 *
 * Return: memory address newly allocated, or NULL on error
 */
-static void *_memcpy(void *v_destination, const void *v_source, size_t num_bytes)
+static void *_memcpy(void *v_dest, const void *v_source, size_t num_bytes)
 {
-  char *dst;
-  const char *src;
+	char *dst;
+	const char *src;
 
-  dst = v_destination;
-  src = v_source;
+	dst = v_dest;
+	src = v_source;
 
-  while(num_bytes-- > 0)
-	*dst++ = *src++;
+	while (num_bytes-- > 0)
+		*dst++ = *src++;
 
-  return (v_destination);
+	return (v_dest);
 }
 
 /**
@@ -43,7 +43,7 @@ void *naive_malloc(size_t size)
 	static void *heap_pointer;
 
 	if (!size)
-		return (NULL);
+		return (NULL);                                             
 
 	while (block < chunk_header)
 	{
