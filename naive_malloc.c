@@ -7,16 +7,26 @@
 #define MALIGN(x) ((8 - 1 + x) & ~(8 - 1))
 #define MALLOCD_PAGE sysconf(_SC_PAGESIZE)
 
-static void *_memcpy(void *vdst, const void *vsrc, int n)
+/**
+* _memcpy - reimplenatation of memcpy
+* @v_destination: place we're copying to
+* @v_source: place we're copying from
+* @num_bytes: how much we're copying
+*
+* Return: memory address newly allocated, or NULL on error
+*/
+static void *_memcpy(void *v_destination, const void *v_source, size_t num_bytes)
 {
   char *dst;
   const char *src;
 
-  dst = vdst;
-  src = vsrc;
-  while(n-- > 0)
+  dst = v_destination;
+  src = v_source;
+
+  while(num_bytes-- > 0)
     *dst++ = *src++;
-  return (vdst);
+
+  return (v_destination);
 }
 
 /**
