@@ -24,7 +24,7 @@ static void *_memcpy(void *v_destination, const void *v_source, size_t num_bytes
   src = v_source;
 
   while(num_bytes-- > 0)
-    *dst++ = *src++;
+	*dst++ = *src++;
 
   return (v_destination);
 }
