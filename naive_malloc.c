@@ -5,7 +5,6 @@
 #include "malloc.h"
 
 #define MALIGN(x) ((8 - 1 + x) & ~(8 - 1))
-#define MALLOCD_PAGE sysconf(_SC_PAGESIZE)
 
 /**
 * _memcpy - reimplenatation of memcpy
