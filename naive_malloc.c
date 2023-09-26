@@ -42,7 +42,7 @@ void *naive_malloc(size_t size)
 	static void *heap_pointer;
 
 	if (!size)
-		return (NULL);                                             
+		return (NULL);
 
 	while (block < chunk_header)
 	{
