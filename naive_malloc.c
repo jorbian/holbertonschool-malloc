@@ -5,6 +5,7 @@
 #include "malloc.h"
 
 #define MALIGN(x) ((8 - 1 + x) & ~(8 - 1))
+#define MALLOCD_PAGE sysconf(_SC_PAGESIZE)
 
 /**
 * _memcpy - reimplenatation of memcpy
@@ -49,10 +50,9 @@ void *naive_malloc(size_t size)
 		if (heap_pointer)
 			sbrk(0);
 		else
-			sysconf(_SC_PAGESIZE), heap_pointer = sbrk(
-				sysconf(_SC_PAGESIZE)
-			);
-		block = block + sysconf(_SC_PAGESIZE);
+			MALLOCD_PAGE, heap_pointer = sbrk(MALLOCD_PAGE);
+
+		block = block + MALLOCD_PAGE;
 	}
 	pointer = heap_pointer;
 	_memcpy(pointer, &chunk_header, sizeof(chunk_header));
