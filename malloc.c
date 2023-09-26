@@ -7,6 +7,8 @@
 /**
 * _malloc - reimplementation of malloc
 * @size: number of bytes requested
+*
+* Return: Pointer to the start of allocated memory.
 */
 void *_malloc(size_t size)
 {
